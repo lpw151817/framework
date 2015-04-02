@@ -1,4 +1,4 @@
-1.所有的activity继承cm.getuptogether.activity.BaseActivity。Dao继承cm.getuptogether.dao.BaseDao。
+1.所有的activity继承BaseActivity。Dao继承BaseDao。Adapter继承com.framework.adapter.BaseAdapter。
 
 2.如何使用AndroidAnnotation:
 	http://blog.csdn.net/limb99/article/details/9067827
