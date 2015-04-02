@@ -10,6 +10,7 @@ import org.androidannotations.annotations.ViewById;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,7 +24,6 @@ import com.framework.bean.Test;
 import com.framework.dao.TestDAO;
 import com.framework.request.ImageRequest;
 import com.framework.request.StringRequest;
-import com.framework.service.OpenLockService;
 import com.framework.util.VolleyTools;
 
 /**
@@ -105,7 +105,7 @@ public class MainActivity extends BaseActivity {
 
 			@Override
 			public void onResponse(Bitmap arg0) {
-				img.setImageBitmap(arg0);
+				// img.setImageBitmap(arg0);
 			}
 		}, 300, 200, new ErrorListener() {
 
@@ -117,7 +117,8 @@ public class MainActivity extends BaseActivity {
 		}));
 
 		// 方法二，对应imageview绑定对应的网络图片
-		tool.getImageLoader().get(url, ImageLoader.getImageListener(img, R.drawable.ic_launcher, 0));
+		// tool.getImageLoader().get(url, ImageLoader.getImageListener(img,
+		// R.drawable.ic_launcher, 0));
 
 		// 方法三，使用NetworkImageView
 		imageView.setImageUrl(url, tool.getImageLoader());
@@ -126,9 +127,6 @@ public class MainActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		// 打开service
-		startService(new Intent(this, OpenLockService.class));
 	}
 
 }
