@@ -1,104 +1,105 @@
-1.ËùÓĞµÄactivity¼Ì³ĞBaseActivity¡£Dao¼Ì³ĞBaseDao¡£Adapter¼Ì³Ğcom.framework.adapter.BaseAdapter¡£
+1.æ‰€æœ‰çš„activityç»§æ‰¿BaseActivityã€‚Daoç»§æ‰¿BaseDaoã€‚Adapterç»§æ‰¿com.framework.adapter.BaseAdapterã€‚
 
-2.ÈçºÎÊ¹ÓÃAndroidAnnotation:
+2.å¦‚ä½•ä½¿ç”¨AndroidAnnotation:
 	http://blog.csdn.net/limb99/article/details/9067827
 	https://github.com/excilys/androidannotations/wiki
 	http://www.itnose.net/detail/6098386.html
-	Àı×Ó²ÎÕÕcm.getuptogether.activity.MainActivityÖĞ²¼¾ÖµÄÉèÖÃÒÔ¼°¿Ø¼şµÄÉùÃ÷¡£
+	ä¾‹å­å‚ç…§cm.getuptogether.activity.MainActivityä¸­å¸ƒå±€çš„è®¾ç½®ä»¥åŠæ§ä»¶çš„å£°æ˜ã€‚
 	
 
-3.ÈçºÎÔÚActivityÖĞÊ¹ÓÃormlite½øĞĞÔöÉ¾¸Ä²é
-	3.1 ĞÂ½¨ÊµÌåÀà¡£Ã¿¸öÊµÌåÀà¶ÔÓ¦Ò»ÕÅ±í¡£²ÎÕÕcm.getuptogether.bean.Test¡£
-	3.1 ĞÂ½¨ÊµÌåÀàµÄdaoÎÄ¼ş£¬¼Ì³Ğcm.getuptogether.dao.BaseDao¡£ÔÚBaseDaoÖĞ¶¨ÒåÁË»ù±¾µÄÔöÉ¾¸Ä²éµÄ²Ù×÷¡£Èç¹ûĞèÒª¸´ÔÓµÄÔöÉ¾¸Ä²é£¬ÔÚĞÂ½¨µÄÊµÌåÀàÖĞÍê³É¼´¿É¡£
-	3.2 ÔÚBaseActivityÖĞÒÑ¶¨ÒåÁËdao¡£ËùÒÔÔÚ×ÓÀàµÄactivityÖĞÖ»ĞèÒªnewÒ»¸ö¶ÔÓ¦ÊµÌåÀàµÄ¶ÔÏó³öÀ´¼´¿É²Ù×÷¶ÔÓ¦ÊµÌåÀàµÄ±í¡£
-	3.3 ÔÚactivityÖĞÀûÓÃÊµÌåÀàµÄdaoÎÄ¼ş½øĞĞsqliteµÄÔöÉ¾¸Ä²é
+3.å¦‚ä½•åœ¨Activityä¸­ä½¿ç”¨ormliteè¿›è¡Œå¢åˆ æ”¹æŸ¥
+	3.1 æ–°å»ºå®ä½“ç±»ã€‚æ¯ä¸ªå®ä½“ç±»å¯¹åº”ä¸€å¼ è¡¨ã€‚å‚ç…§cm.getuptogether.bean.Testã€‚
+	3.1 æ–°å»ºå®ä½“ç±»çš„daoæ–‡ä»¶ï¼Œç»§æ‰¿cm.getuptogether.dao.BaseDaoã€‚åœ¨BaseDaoä¸­å®šä¹‰äº†åŸºæœ¬çš„å¢åˆ æ”¹æŸ¥çš„æ“ä½œã€‚å¦‚æœéœ€è¦å¤æ‚çš„å¢åˆ æ”¹æŸ¥ï¼Œåœ¨æ–°å»ºçš„å®ä½“ç±»ä¸­å®Œæˆå³å¯ã€‚
+	3.2 åœ¨BaseActivityä¸­å·²å®šä¹‰äº†daoã€‚æ‰€ä»¥åœ¨å­ç±»çš„activityä¸­åªéœ€è¦newä¸€ä¸ªå¯¹åº”å®ä½“ç±»çš„å¯¹è±¡å‡ºæ¥å³å¯æ“ä½œå¯¹åº”å®ä½“ç±»çš„è¡¨ã€‚
+	3.3 åœ¨activityä¸­åˆ©ç”¨å®ä½“ç±»çš„daoæ–‡ä»¶è¿›è¡Œsqliteçš„å¢åˆ æ”¹æŸ¥
 
-	System.out.println("===============test insert");
-	System.out.println("insert:1 1 ");
-	dao.insert(new Test(1, 1));
-	System.out.println("insert:2 2");
-	dao.insert(new Test(1, 2));
+			System.out.println("===============test insert");
+            System.out.println("insert:1 1 ");
+            dao.insert(new Test(1, 1));
+            System.out.println("insert:2 2");
+            dao.insert(new Test(2, 2));
 
-	 System.out.println("===============test query");
-	 System.out.println("query state=1");
-	 for (Test test : dao.query("state", "1")) {
-	 System.out.println(test);
-	 }
-	 System.out.println("query all");
-	 for (Test test : dao.queryAll()) {
-	 System.out.println(test);
-	 }
-	 System.out.println("insert all");
-	List<Test> ls = new ArrayList<Test>();
-	ls.add(new Test(1, 3));
-	ls.add(new Test(1, 4));
-	dao.insert(ls);
-	 System.out.println("query all");
-	 for (Test test : dao.queryAll()) {
-	 System.out.println(test);
-	 }
-	
-	 System.out.println("query userprofileId=1,state=1");
-	 for (Test test : dao.query(new String[] { "userprofileId",
-	 "state" }, new String[] { "1", "1" })) {
-	 System.out.println(test);
-	 }
-	 System.out.println("query userprofileId=2,state=1");
-	 for (Test test : dao.query(new String[] { "userprofileId",
-	 "state" }, new String[] { "2", "1" })) {
-	 System.out.println(test);
-	 }
-	
-	 Map<String, Object> map = new HashMap<String, Object>();
-	 map.put("userprofileId", 4);
-	 for (Test test : dao.query(map)) {
-	 System.out.println(test);
-	 }
-	
-	 Map<String, Object> map = new HashMap<String, Object>();
-	 map.put("state", 1);
-	 Map<String, Object> low = new HashMap<String, Object>();
-	 low.put("userprofileId", 1);
-	 Map<String, Object> high = new HashMap<String, Object>();
-	 high.put("userprofileId", 4);
-	 for (Test test : dao.query(map, low, high)) {
-	 System.out.println(test);
-	 }
+            System.out.println("===============test query");
+            System.out.println("query state=1");
+            for (Test test : (List<Test>) dao.query("state", "1")) {
+                System.out.println(test);
+            }
+            System.out.println("query all");
+            for (Test test : (List<Test>) dao.queryAll()) {
+                System.out.println(test);
+            }
+            System.out.println("insert all");
+            List<Test> ls = new ArrayList<Test>();
+            ls.add(new Test(1, 3));
+            ls.add(new Test(1, 4));
+            dao.insert(ls);
 
-	 System.out.println("===============test update");
-	 List<Test> list = dao.queryAll();
-	
-	 Test test_o = list.get(0);
-	
-	 test_o.setState(555);
-	
-	 dao.update(test_o);
-	 System.out.println("query all");
-	 for (Test test : dao.queryAll()) {
-	 System.out.println(test);
-	 }
+            System.out.println("query all");
+            for (Test test : (List<Test>) dao.queryAll()) {
+                System.out.println(test);
+            }
 
-	 System.out.println("======================test delete");
-	 System.out.println("query all");
-	 for (Test test : dao.queryAll()) {
-	 System.out.println(test);
-	 }
-	 System.out.println("delete state=3");
-	 dao.delete("state", "3");
-	 for (Test test : dao.queryAll()) {
-	 System.out.println(test);
-	 }
-	 System.out.println("delete state=2 userprofileId=56");
-	 dao.delete(new String[]{"state","userprofileId"}, new
-	 String[]{"2","56"});
-	 for (Test test : dao.queryAll()) {
-	 System.out.println(test);
-	 }
+            System.out.println("query userprofileId=1,state=1");
+            for (Test test : (List<Test>) dao.query(new String[]{"userprofileId",
+                    "state"}, new String[]{"1", "1"})) {
+                System.out.println(test);
+            }
+            System.out.println("query userprofileId=3,state=1");
+            for (Test test : (List<Test>) dao.query(new String[]{"userprofileId",
+                    "state"}, new String[]{"3", "1"})) {
+                System.out.println(test);
+            }
+            System.out.println("query hashmap userprofileId=4");
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("userprofileId", 4);
+            for (Test test : (List<Test>) dao.query(map)) {
+                System.out.println(test);
+            }
+
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("state", 1);
+            Map<String, Object> low = new HashMap<String, Object>();
+            low.put("userprofileId", 1);
+            Map<String, Object> high = new HashMap<String, Object>();
+            high.put("userprofileId", 4);
+            for (Test test : (List<Test>) dao.query(map, low, high)) {
+                System.out.println(test);
+            }
+
+            System.out.println("===============test update");
+            List<Test> list = dao.queryAll();
+
+            Test test_o = list.get(0);
+
+            test_o.setState(555);
+
+            dao.update(test_o);
+            System.out.println("query all");
+            for (Test test : (List<Test>) dao.queryAll()) {
+                System.out.println(test);
+            }
+
+            System.out.println("======================test delete");
+            System.out.println("query all");
+            for (Test test : (List<Test>) dao.queryAll()) {
+                System.out.println(test);
+            }
+            System.out.println("delete state=3");
+            dao.delete("state", "3");
+            for (Test test : (List<Test>) dao.queryAll()) {
+                System.out.println(test);
+            }
+            System.out.println("delete state=2 userprofileId=56");
+            dao.delete(new String[]{"state", "userprofileId"}, new
+                    String[]{"2", "56"});
+            for (Test test : (List<Test>) dao.queryAll()) {
+                System.out.println(test);
+            }
 	 
-4.ÈçºÎÊ¹ÓÃVolley½øĞĞÍøÂçÍ¨ĞÅ
-	Ö±½Ó´ÓBaseActivityÖĞÄÃ³öVolleyTools¶ÔÏó£¬È»ºó²ÎÕÕcm.getuptogether.activity.MainActivityÖĞ¡£
+4.å¦‚ä½•ä½¿ç”¨Volleyè¿›è¡Œç½‘ç»œé€šä¿¡
+	ç›´æ¥ä»BaseActivityä¸­æ‹¿å‡ºVolleyToolså¯¹è±¡ï¼Œç„¶åå‚ç…§cm.getuptogether.activity.MainActivityä¸­ã€‚
 
-5.ÔÚBaseActivityÖĞ»¹¶¨ÒåÁËGson£¬Ö±½Ó¾Í¿ÉÒÔÊ¹ÓÃ¡£
+5.åœ¨BaseActivityä¸­è¿˜å®šä¹‰äº†Gsonï¼Œç›´æ¥å°±å¯ä»¥ä½¿ç”¨ã€‚
 
 
 	 
